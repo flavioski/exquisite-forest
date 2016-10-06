@@ -254,11 +254,11 @@ class SeoMegaPack_AutoGenerator extends SeoMegaPack_AbstractGenerator {
 		if( ! isset( $info[$type] ) ) 
 			return $this;
 		
-		$file = VQMod::modCheck( DIR_SYSTEM . 'library/smk/extensions/' . ( $target == 'product' ? '' : $target . '_' ) . $info[$type]['f'] . '_generator.php' );
-		
+//		$file = VQMod::modCheck( DIR_SYSTEM . 'library/smk/extensions/' . ( $target == 'product' ? '' : $target . '_' ) . $info[$type]['f'] . '_generator.php' );
+
 		if( ! file_exists( $file ) )
 			return $this;
-		
+
 		require_once $file;
 		
 		$class	= 'SeoMegaPack_' . ( $target == 'product' ? '' : ucfirst( $target ) ) . $info[$type]['c'] . 'Generator';
