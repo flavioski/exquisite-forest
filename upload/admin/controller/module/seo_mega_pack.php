@@ -361,8 +361,12 @@ class ControllerModuleSeoMegaPack extends Controller {
 		while( false !== ( $extension = readdir( $extension_dir ) ) ) {
 			if( $extension == '.' || $extension == '..' || strpos( $extension, 'abstract_' ) === 0 || strpos( $extension, 'parse_url_' ) === 0 || ! preg_match( '/\.php$/', $extension ) ) continue;
 
-//			require_once VQMod::modCheck(realpath($this->extensions_dir . '/' . $extension));
-			
+            if( class_exists( 'VQMod' ) ) {
+                require_once VQMod::modCheck(realpath($this->extensions_dir . '/' . $extension));
+            } else {
+                require_once modification(realpath($this->extensions_dir . '/' . $extension));
+            }
+
 			// check type
 			// sprawdź typ
 			switch( true ) {
@@ -593,8 +597,12 @@ class ControllerModuleSeoMegaPack extends Controller {
 	}
 	
 	private function _clearIfOn( $str ) {
-//		require_once VQMod::modCheck(modification(realpath(DIR_APPLICATION . '../catalog/controller/common/seo_mega_pack_pro_url.php')));
-		
+        if( class_exists( 'VQMod' ) ) {
+            require_once VQMod::modCheck(modification(realpath(DIR_APPLICATION . '../catalog/controller/common/seo_mega_pack_pro_url.php')));
+        } else {
+            require_once modification(realpath(DIR_APPLICATION . '../catalog/controller/common/seo_mega_pack_pro_url.php'));
+        }
+
 		return ControllerCommonSeoMegaPackProUrl::_clear( $str, $this->config->get( 'smp_clear_on' ) );
 	}
 	
@@ -1362,8 +1370,12 @@ class ControllerModuleSeoMegaPack extends Controller {
 		
 		$count = $this->db->query( $count )->row['c'];
 		
-//		require_once VQMod::modCheck(modification(realpath(DIR_APPLICATION . '/../catalog/controller/common/seo_mega_pack_pro_url.php')));
-		
+        if( class_exists( 'VQMod' ) ) {
+            require_once VQMod::modCheck(modification(realpath(DIR_APPLICATION . '/../catalog/controller/common/seo_mega_pack_pro_url.php')));
+        } else {
+            require_once modification(realpath(DIR_APPLICATION . '/../catalog/controller/common/seo_mega_pack_pro_url.php'));
+        }
+
 		$smp = new ControllerCommonSeoMegaPackProUrl( $this->registry );
 		$smp->_setConfigLang( $language['code'], $language['language_id'] );
 			
