@@ -6,7 +6,11 @@
  * @author marsilea15 <marsilea15@gmail.com>
  */
 
-//require_once VQMod::modCheck( DIR_SYSTEM . 'library/smk/extensions/abstract_generator.php' );
+if( class_exists( 'VQMod' ) ) {
+    require_once VQMod::modCheck(modification(realpath(DIR_SYSTEM . 'library/smk/extensions/abstract_generator.php')));
+} else {
+    require_once modification(realpath(DIR_SYSTEM . 'library/smk/extensions/abstract_generator.php'));
+}
 
 class SeoMegaPack_SeoUrlsGenerator extends SeoMegaPack_AbstractGenerator {
 	
@@ -130,10 +134,12 @@ class SeoMegaPack_SeoUrlsGenerator extends SeoMegaPack_AbstractGenerator {
 	}
 	
 	protected function _clearIfOn( $str ) {
-//		require_once VQMod::modCheck(modification(realpath(
-//			DIR_APPLICATION . '../catalog/controller/common/seo_mega_pack_pro_url.php'
-//		)));
-		
+        if( class_exists( 'VQMod' ) ) {
+            require_once VQMod::modCheck(modification(realpath(DIR_APPLICATION . '../catalog/controller/common/seo_mega_pack_pro_url.php')));
+        } else {
+            require_once modification(realpath(DIR_APPLICATION . '../catalog/controller/common/seo_mega_pack_pro_url.php'));
+        }
+
 		return ControllerCommonSeoMegaPackProUrl::_clear( $str, $this->config->get( 'smp_clear_on' ) );
 	}
 	

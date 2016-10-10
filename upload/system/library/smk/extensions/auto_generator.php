@@ -6,7 +6,11 @@
  * @author marsilea15 <marsilea15@gmail.com>
  */
 
-//require_once VQMod::modCheck( DIR_SYSTEM . 'library/smk/extensions/abstract_generator.php' );
+if( class_exists( 'VQMod' ) ) {
+    require_once VQMod::modCheck(modification(realpath(DIR_SYSTEM . 'library/smk/extensions/abstract_generator.php')));
+} else {
+    require_once modification(realpath(DIR_SYSTEM . 'library/smk/extensions/abstract_generator.php'));
+}
 
 class SeoMegaPack_AutoGenerator extends SeoMegaPack_AbstractGenerator {
 	
@@ -126,8 +130,12 @@ class SeoMegaPack_AutoGenerator extends SeoMegaPack_AbstractGenerator {
 		
 		if( ! file_exists( DIR_SYSTEM . 'library/smk/extensions/seo_urls_generator.php' ) ) return $this;
 		
-//		require_once VQMod::modCheck( DIR_SYSTEM . 'library/smk/extensions/seo_urls_generator.php' );
-		
+        if( class_exists( 'VQMod' ) ) {
+            require_once VQMod::modCheck(modification(realpath(DIR_SYSTEM . 'library/smk/extensions/seo_urls_generator.php')));
+        } else {
+            require_once modification(realpath(DIR_SYSTEM . 'library/smk/extensions/seo_urls_generator.php'));
+        }
+
 		$seo = new SeoMegaPack_SeoUrlsGenerator( $this->_controller );
 		
 		foreach( $this->db->query( 'SELECT * FROM ' . DB_PREFIX . 'language WHERE status=1 ORDER BY sort_order ASC' )->rows as $lang ) {
@@ -144,8 +152,12 @@ class SeoMegaPack_AutoGenerator extends SeoMegaPack_AbstractGenerator {
 		
 		if( ! file_exists( DIR_SYSTEM . 'library/smk/extensions/seo_urls_generator.php' ) ) return $this;
 		
-//		require_once VQMod::modCheck( DIR_SYSTEM . 'library/smk/extensions/seo_urls_generator.php' );
-		
+        if( class_exists( 'VQMod' ) ) {
+            require_once VQMod::modCheck(modification(realpath(DIR_SYSTEM . 'library/smk/extensions/seo_urls_generator.php')));
+        } else {
+            require_once modification(realpath(DIR_SYSTEM . 'library/smk/extensions/seo_urls_generator.php'));
+        }
+
 		$seo = new SeoMegaPack_SeoUrlsGenerator( $this->_controller );
 		
 		foreach( $this->db->query( 'SELECT * FROM ' . DB_PREFIX . 'language WHERE status=1 ORDER BY sort_order ASC' )->rows as $lang ) {
@@ -162,8 +174,12 @@ class SeoMegaPack_AutoGenerator extends SeoMegaPack_AbstractGenerator {
 		
 		if( ! file_exists( DIR_SYSTEM . 'library/smk/extensions/seo_urls_generator.php' ) ) return $this;
 		
-//		require_once VQMod::modCheck( DIR_SYSTEM . 'library/smk/extensions/seo_urls_generator.php' );
-		
+        if( class_exists( 'VQMod' ) ) {
+            require_once VQMod::modCheck(modification(realpath(DIR_SYSTEM . 'library/smk/extensions/seo_urls_generator.php')));
+        } else {
+            require_once modification(realpath(DIR_SYSTEM . 'library/smk/extensions/seo_urls_generator.php'));
+        }
+
 		$seo = new SeoMegaPack_SeoUrlsGenerator( $this->_controller );
 		
 		foreach( $this->db->query( 'SELECT * FROM ' . DB_PREFIX . 'language WHERE status=1 ORDER BY sort_order ASC' )->rows as $lang ) {
@@ -180,8 +196,12 @@ class SeoMegaPack_AutoGenerator extends SeoMegaPack_AbstractGenerator {
 		
 		if( ! file_exists( DIR_SYSTEM . 'library/smk/extensions/seo_urls_generator.php' ) ) return $this;
 		
-//		require_once VQMod::modCheck( DIR_SYSTEM . 'library/smk/extensions/seo_urls_generator.php' );
-		
+        if( class_exists( 'VQMod' ) ) {
+            require_once VQMod::modCheck(modification(realpath(DIR_SYSTEM . 'library/smk/extensions/seo_urls_generator.php')));
+        } else {
+            require_once modification(realpath(DIR_SYSTEM . 'library/smk/extensions/seo_urls_generator.php'));
+        }
+
 		$seo = new SeoMegaPack_SeoUrlsGenerator( $this->_controller );
 		
 		foreach( $this->db->query( 'SELECT * FROM ' . DB_PREFIX . 'language WHERE status=1 ORDER BY sort_order ASC' )->rows as $lang ) {
@@ -254,7 +274,11 @@ class SeoMegaPack_AutoGenerator extends SeoMegaPack_AbstractGenerator {
 		if( ! isset( $info[$type] ) ) 
 			return $this;
 		
-//		$file = VQMod::modCheck( DIR_SYSTEM . 'library/smk/extensions/' . ( $target == 'product' ? '' : $target . '_' ) . $info[$type]['f'] . '_generator.php' );
+        if( class_exists( 'VQMod' ) ) {
+            $file = VQMod::modCheck(modification(realpath(DIR_SYSTEM . 'library/smk/extensions/' . ( $target == 'product' ? '' : $target . '_' ) . $info[$type]['f'] . '_generator.php')));
+        } else {
+            $file = modification(realpath(DIR_SYSTEM . 'library/smk/extensions/' . ( $target == 'product' ? '' : $target . '_' ) . $info[$type]['f'] . '_generator.php'));
+        }
 
 		if( ! file_exists( $file ) )
 			return $this;

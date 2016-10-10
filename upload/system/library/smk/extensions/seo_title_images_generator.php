@@ -6,7 +6,11 @@
  * @author marsilea15 <marsilea15@gmail.com>
  */
 
-//require_once VQMod::modCheck( DIR_SYSTEM . 'library/smk/extensions/abstract_product_generator.php' );
+if( class_exists( 'VQMod' ) ) {
+    require_once VQMod::modCheck(modification(realpath(DIR_SYSTEM . 'library/smk/extensions/abstract_product_generator.php')));
+} else {
+    require_once modification(realpath(DIR_SYSTEM . 'library/smk/extensions/abstract_product_generator.php'));
+}
 
 class SeoMegaPack_SeoTitleImagesGenerator extends SeoMegaPack_AbstractProductGenerator {
 	
