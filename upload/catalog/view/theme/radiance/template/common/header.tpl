@@ -35,6 +35,57 @@
 <?php foreach ($analytics as $analytic) { ?>
 <?php echo $analytic; ?>
 <?php } ?>
+<?php if( ! empty( $smp_canonical_url ) ) { ?>
+<link href="<?php echo $smp_canonical_url; ?>" rel="canonical" />
+<?php } ?>
+<?php foreach( $documentGetMeta as $val ) { ?>
+<meta<?php foreach( $val as $k => $v ) { ?> <?php echo $k; ?>="<?php echo $v; ?>"<?php } ?> />
+<?php } ?>
+<script type="text/javascript">
+    function getURLVar(key) {
+    <?php if( ! empty( $smk_current_route ) ) { ?>
+            if( key == 'route' ) {
+                return '<?php echo addslashes( $smk_current_route ); ?>';
+            }
+        <?php } ?>
+
+        var value 	= [],
+                url		= String(document.location),
+                query;
+
+        if( url.indexOf( '?' ) > -1 ) {
+            query = url.split('?');
+        } else {
+            query = url.split('/');
+            query.shift();
+            query.shift();
+            query.shift();
+            query = query.join('/');
+
+            query = query.indexOf( '&' ) > -1 ? [ query.substring( 0, query.indexOf('&') ), query.substring( query.indexOf('&')+1 ) ] : [ query, '' ];
+
+            value['route'] = query[0];
+        }
+
+        if (typeof query[1] != 'undefined') {
+            var part = query[1].split('&');
+
+            for (i = 0; i < part.length; i++) {
+                var data = part[i].split('=');
+
+                if (data[0] && data[1]) {
+                    value[data[0]] = data[1];
+                }
+            }
+
+            if (value[key]) {
+                return value[key];
+            } else {
+                return '';
+            }
+        }
+    }
+</script>
 </head>
 <body class="<?php echo $class; ?>">
 <div id="cartBox">
