@@ -9,6 +9,39 @@
     <?php $class = 'col-sm-12'; ?>
     <?php } ?>
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
+      <?php if( ! empty( $smp_is_product ) ) { ?>
+      <span itemscope itemtype="http://schema.org/Product">
+        <meta itemprop="name" content="<?php echo htmlspecialchars( str_replace( '&amp;', '&', $heading_title ), ENT_QUOTES ); ?>">
+        <?php if( ! empty( $breadcrumb ) ) { ?>
+        <meta itemprop="url" content="<?php echo htmlspecialchars( $breadcrumb['href'], ENT_QUOTES ); ?>">
+        <?php } ?>
+        <?php if( ! empty( $model ) ) { ?>
+        <meta itemprop="model" content="<?php echo htmlspecialchars( $model, ENT_QUOTES ); ?>">
+        <?php } ?>
+        <?php if( ! empty( $manufacturer ) ) { ?>
+        <meta itemprop="manufacturer" content="<?php echo htmlspecialchars( $manufacturer, ENT_QUOTES ); ?>">
+        <?php } ?>
+        <span itemscope itemprop="offers" itemtype="http://schema.org/Offer">
+          <meta itemprop="price" content="<?php if( ! empty( $special ) ) { echo preg_replace( '/[^0-9.]/', '', str_replace( ',', '.', $special ) ); } else { echo preg_replace( '/[^0-9.]/', '', str_replace( ',', '.', $price ) ); } ?>">
+          <meta itemprop="priceCurrency" content="<?php echo $smp_currency; ?>">
+          <link itemprop="availability" href="http://schema.org/<?php if( $smp_in_stock ) { ?>InStock<?php } else { ?>OutOfStock<?php } ?>">
+        </span>
+        <?php if( $review_status && $smp_reviews ) { ?>
+        <span itemscope itemprop="aggregateRating" itemtype="http://schema.org/AggregateRating">
+          <meta itemprop="reviewCount" content="<?php echo $smp_reviews; ?>">
+          <meta itemprop="ratingValue" content="<?php echo $rating; ?>">
+          <meta itemprop="bestRating" content="5">
+          <meta itemprop="worstRating" content="1">
+        </span>
+        <?php } ?>
+        <?php if( $thumb ) { ?>
+        <meta itemprop="image" content="<?php echo $thumb; ?>">
+        <?php } ?>
+        <?php foreach( $images as $image ) { ?>
+        <meta itemprop="image" content="<?php echo $image['popup']; ?>">
+        <?php } ?>
+      </span>
+      <?php } ?>
       <ul class="breadcrumb">
         <?php foreach ($breadcrumbs as $breadcrumb) { ?>
         <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
