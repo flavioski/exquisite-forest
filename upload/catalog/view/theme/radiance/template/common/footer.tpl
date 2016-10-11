@@ -158,5 +158,8 @@ function showDropdown(element) {
 OpenCart is open source software and you are free to remove the powered by OpenCart if you want, but its generally accepted practise to make a small donation.
 Please donate via PayPal to donate@opencart.com
 //-->
+<?php if( ! empty( $smp_google_analytics ) ) { ?>
+<?php echo htmlspecialchars_decode( $smp_google_analytics ); ?>
+<?php } ?>
 </body>
 </html>
