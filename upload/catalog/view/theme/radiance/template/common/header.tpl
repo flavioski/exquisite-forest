@@ -86,6 +86,156 @@
         }
     }
 </script>
+<?php if( ! empty( $smp_meta ) ) { ?>
+<?php foreach( $smp_meta as $k => $v ) { ?>
+<?php if( ! empty( $v ) ) { ?>
+<meta name="<?php echo $k; ?>" content="<?php echo $v; ?>" />
+<?php } ?>
+<?php } ?>
+<?php } ?>
+<?php if( ! empty( $smp_extras['facebook_widget']['enabled'] ) ) { ?>
+<script type="text/javascript">
+    $().ready(function(){
+        $('body').prepend('<div id="fb-root"></div>');
+
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/<?php echo $smp_config_language . '_' . strtoupper( $smp_config_language ); ?>/sdk.js#xfbml=1&version=v2.4";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    });
+</script>
+<script type="text/javascript">
+    $().ready(function(){
+        var html =
+                '<div ' +
+                'id="smp-fb-widget" ' +
+                'style="border: 1px solid #<?php echo $smp_extras['facebook_widget']['colorscheme'] == 'dark' ? '000' : 'ccc'; ?>; background: #<?php echo $smp_extras['facebook_widget']['colorscheme'] == 'dark' ? '000' : 'fff'; ?>; z-index: 999; position: fixed; display: block; top:<?php echo $smp_extras['facebook_widget']['margin_top']; ?>px; <?php echo $smp_extras['facebook_widget']['position'] == 'left' ? 'left' : 'right'; ?>:-<?php echo $smp_extras['facebook_widget']['width']+2; ?>px;"' +
+        '>' +
+        '<img ' +
+        'style="position: absolute; cursor: pointer;" ' +
+        'src="<?php echo ! empty( $smp_extras['facebook_widget']['image'] ) ? 'image/' . $smp_extras['facebook_widget']['image'] : ( 'catalog/view/theme/default/smp/img/fb-' . $smp_extras['facebook_widget']['position'] . '.png' ); ?>" ' +
+        '/>' +
+        '<div ' +
+        'class="fb-page" ' +
+        'data-href="<?php echo $smp_extras['facebook_widget']['url']; ?>" ' +
+        'data-small-header="<?php echo ! empty( $smp_extras['facebook_widget']['small_header'] ) ? 'true' : 'false'; ?>" ' +
+        'data-adapt-container-width="false" ' +
+        'data-hide-cover="false" ' +
+        'data-show-facepile="<?php echo empty( $smp_extras['facebook_widget']['show_faces'] ) ? 'false' : 'true'; ?>" ' +
+        'data-width="<?php echo $smp_extras['facebook_widget']['width']; ?>" ' +
+        'data-height="<?php echo $smp_extras['facebook_widget']['height']; ?>" ' +
+        'data-show-posts="<?php echo empty( $smp_extras['facebook_widget']['show_posts'] ) ? 'false' : 'true'; ?>">' +
+        '<div class="fb-xfbml-parse-ignore">' +
+        '<blockquote cite="<?php echo $smp_extras['facebook_widget']['url']; ?>">' +
+        '<a href="<?php echo $smp_extras['facebook_widget']['url']; ?>">Facebook</a>' +
+        '</blockquote>' +
+        '</div>' +
+        '</div>';
+
+        $('body').prepend( html );
+    });
+</script>
+<script type="text/javascript">
+    $().ready(function(){
+        $('#smp-fb-widget').each(function(){
+            var self	= $(this),
+                    img		= self.find('> img:first'),
+                    box		= self.find('.fb-like-box:first'),
+                    pos		= '<?php echo $smp_extras['facebook_widget']['position']; ?>',
+                    width	= <?php echo (int) $smp_extras['facebook_widget']['width']+2; ?>,
+            loader	= setInterval(function(){
+                if( ! img.width() || ! img.height() )
+                    return;
+
+                clearInterval( loader );
+
+                img.css('margin-left', pos == 'left' ? width-1 : - img.width());
+                img.click(function(){
+                    var opt = {};
+                    opt[pos] = 0;
+
+                    self.animate(opt, 500).unbind('mouseleave').bind('mouseleave', function(){
+                        var opt = {};
+                        opt[pos] = - width;
+                        self.animate(opt,500);
+                    });
+                });
+            },100);
+        });
+    });
+</script>
+<?php } ?>
+<?php if( ! empty( $smp_extras ) && ! empty( $smp_extras['g_plus_widget']['enabled'] ) ) { ?>
+<script type="text/javascript">
+    $().ready(function(){
+        window.___gcfg = {lang: '<?php echo $smp_config_language; ?>'};
+
+        (function() {
+            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+            po.src = 'https://apis.google.com/js/platform.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+        })();
+    });
+</script>
+<script type="text/javascript">
+    $().ready(function(){
+        var html =
+                '<div ' +
+                'id="smp-gplus-widget" ' +
+                'style="background: #<?php echo $smp_extras['g_plus_widget']['colorscheme'] == 'dark' ? '000' : 'fff'; ?>; z-index: 999; position: fixed; display: block; top:<?php echo $smp_extras['g_plus_widget']['margin_top']; ?>px; <?php echo $smp_extras['g_plus_widget']['position'] == 'left' ? 'left' : 'right'; ?>:<?php echo - $smp_extras['g_plus_widget']['width']; ?>px;"' +
+        '>' +
+        '<img ' +
+        'style="position: absolute; cursor: pointer;" ' +
+        'src="<?php echo ! empty( $smp_extras['g_plus_widget']['image'] ) ? 'image/' . $smp_extras['g_plus_widget']['image'] : ( 'catalog/view/theme/default/smp/img/g_plus-' . $smp_extras['g_plus_widget']['position'] . '.png' ); ?>" ' +
+        '/>' +
+        '<div ' +
+        'class="g-<?php echo empty( $smp_extras['g_plus_widget']['type_account'] ) ? 'person' : $smp_extras['g_plus_widget']['type_account']; ?>" ' +
+        'data-width="<?php echo $smp_extras['g_plus_widget']['width']; ?>" ' +
+        'data-height="<?php echo $smp_extras['g_plus_widget']['height']; ?>" ' +
+        'data-href="<?php echo $smp_extras['g_plus_widget']['url']; ?>" ' +
+        'data-theme="<?php echo $smp_extras['g_plus_widget']['colorscheme']; ?>" ' +
+        ( '<?php echo $smp_extras['g_plus_widget']['layout']; ?>' == 'portrait' ? '' : 'data-layout="<?php echo $smp_extras['g_plus_widget']['layout']; ?>" ' ) +
+                'data-rel="author">' +
+        '</div>' +
+        '</div>';
+
+        $('body').prepend( html );
+    });
+</script>
+<script type="text/javascript">
+    $().ready(function(){
+        $('#smp-gplus-widget').each(function(){
+            var self	= $(this),
+                    img		= self.find('> img:first'),
+                    box		= self.find('.g-<?php echo empty( $smp_extras['g_plus_widget']['type_account'] ) ? 'person' : $smp_extras['g_plus_widget']['type_account']; ?>:first'),
+            pos		= '<?php echo $smp_extras['g_plus_widget']['position']; ?>',
+                    width	= <?php echo (int) $smp_extras['g_plus_widget']['width']; ?>,
+            loader	= setInterval(function(){
+                if( ! img.width() || ! img.height() )
+                    return;
+
+                clearInterval( loader );
+
+                img.css('margin-left', pos == 'left' ? width : - img.width());
+                img.click(function(){
+                    var opt = {};
+                    opt[pos] = 0;
+
+                    self.animate(opt, 500).unbind('mouseleave').bind('mouseleave', function(){
+                        var opt = {};
+                        opt[pos] = - width;
+                        self.animate(opt,500);
+                    });
+                });
+            },100);
+        });
+    });
+</script>
+<?php } ?>
+<?php echo (string) $__SMP_HREFLANG; ?>
 </head>
 <body class="<?php echo $class; ?>">
 <div id="cartBox">
