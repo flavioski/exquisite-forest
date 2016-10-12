@@ -68,11 +68,11 @@
           <?php if ($thumb || $images) { ?>
           <ul class="thumbnails">
             <?php if ($thumb) { ?>
-            <li><a class="thumbnail" href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>"><img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo empty( $smp_alt_images ) ? $heading_title : $smp_alt_images; ?>" /></a></li>
+            <li><a class="thumbnail" href="<?php echo $popup; ?>" title="<?php echo empty( $smp_title_images ) ? $heading_title : $smp_title_images; ?>"><img src="<?php echo $thumb; ?>" title="<?php echo empty( $smp_title_images ) ? $heading_title : $smp_title_images; ?>" alt="<?php echo empty( $smp_alt_images ) ? $heading_title : $smp_alt_images; ?>" /></a></li>
             <?php } ?>
             <?php if ($images) { ?>
             <?php foreach ($images as $image) { ?>
-            <li class="image-additional"><a class="thumbnail" href="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>"> <img src="<?php echo $image['thumb']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo empty( $smp_alt_images ) ? $heading_title : $smp_alt_images; ?>" /></a></li>
+            <li class="image-additional"><a class="thumbnail" href="<?php echo $image['popup']; ?>" title="<?php echo empty( $smp_title_images ) ? $heading_title : $smp_title_images; ?>"> <img src="<?php echo $image['thumb']; ?>" title="<?php echo empty( $smp_title_images ) ? $heading_title : $smp_title_images; ?>" alt="<?php echo empty( $smp_alt_images ) ? $heading_title : $smp_alt_images; ?>" /></a></li>
             <?php } ?>
             <?php } ?>
           </ul>
