@@ -291,7 +291,7 @@
   </div>
 </nav>
 <nav id="top-mobile">
-	<?php if (count($languages) > 1) {?>
+	<?php if (count($languages) > 1) { ?>
    	<div class="language">
     	<a href="javascript:void(0)" class="visible-xs toggleLanguageSwitch">
         <?php foreach ($languages as $language) { ?>
@@ -311,7 +311,7 @@
         </select>
     </div>
     <?php } ?>
-    <?php if (count($currencies) > 1) {?>
+    <?php if (count($currencies) > 1) { ?>
 	<div class="currency">
     	<a href="javascript:void(0)" class="visible-xs toggleCurrencySwitch">
         	<?php foreach ($currencies as $currency) { ?>
@@ -352,7 +352,7 @@
         </div>
       </div>
       <div class="hidden-sm hidden-xs col-md-9 col-lg-9">
-      <?php if($categories) {?>
+      <?php if($categories) { ?>
       	  <nav id="menu" class="navbar">
             <div class="navbar-header"><span id="category" class="visible-xs visible-sm"><?php echo $text_category; ?></span>
               <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
