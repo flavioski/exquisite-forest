@@ -53,6 +53,11 @@
       <?php } else { ?>
       	<h2 class="rc-heading no-margin-top"><?php echo $heading_title; ?></h2>
       <?php } ?>
+      <?php if( ! empty( $description ) ) { ?>
+      <div class="category-info">
+        <?php echo $description; ?>
+      </div>
+      <?php } ?>
       <?php if ($products) { ?>
       <div class="row">
         <?php foreach ($products as $product) { ?>
@@ -99,6 +104,11 @@
         <div class="pull-right"><a href="<?php echo $continue; ?>" class="btn btn-primary"><?php echo $button_continue; ?></a></div>
       </div>
       <?php } ?>
+      <div class="smp-tags">
+        <?php if( ! empty( $tags ) ) { ?>
+        <?php foreach( $tags as $tagKey => $tag ) { ?><?php if( $tagKey ) { ?>, <?php } ?><a href="<?php echo $tag['href']; ?>"><?php echo $tag['tag']; ?></a><?php } ?>
+        <?php } ?>
+      </div>
       <?php echo $content_bottom; ?></div>
     <?php echo $column_right; ?></div>
 </div>
