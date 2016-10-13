@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /
 
-Sitemap: https://www.w3social.it/sitemap.xml
+Sitemap: https://w3social.it/sitemaps/en-gb.sitemap.index.xml
