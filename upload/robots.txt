@@ -1,4 +1,57 @@
+User-agent: 80legs.com
+User-agent: AhrefsBot
+User-agent: BLP_bbot
+User-agent: businessdbbot
+User-agent: CCBot
+User-agent: CovarioIDS
+User-agent: ConveraCrawler
+User-agent: curl/
+User-agent: discobot
+User-agent: Download Ninja
+User-agent: EMail Exractor
+User-agent: Ezooms
+User-agent: FDM 3.x
+User-agent: FlaxCrawler
+User-agent: Grabber
+User-agent: Grapeshot
+User-agent: GSLFbot
+User-agent: heritrix
+User-agent: HTTrack
+User-agent: intelium_bot
+User-agent: IstellaBot
+User-agent: Java/
+User-agent: larbin
+User-agent: lemurwebcrawler
+User-agent: libwww-perl
+User-agent: MetamojiCrawler
+User-agent: MJ12bot
+User-agent: Nutch
+User-agent: OpenAcoon
+User-agent: PHP/
+User-agent: Plukkie
+User-agent: proximic
+User-agent: Python-urllib
+User-agent: Ruby
+User-agent: SemrushBot
+User-agent: SEOkicks
+User-agent: spbot
+User-agent: TurnitinBot
+User-agent: YandexBot
+User-agent: WBSearchBot
+User-agent: WeblexBot
+User-agent: wget
+User-agent: WIRE/0.
+User-agent: ZyBORG
+Disallow: /
+
+
+User-agent: MSNBot/Bingbot
+User-agent: bingbot
+User-agent: msnbot
+Crawl-delay: 120
+
+
 User-agent: *
-Disallow:
+Disallow: /admin/
 
 Sitemap: https://w3social.it/sitemaps/en-gb.sitemap.index.xml
